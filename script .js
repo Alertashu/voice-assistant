@@ -20,6 +20,7 @@ function wishMe() {
   } else {
     speak("Good Evening Sir");
   }
+  
 }
 window.addEventListener("load", () => {
   wishMe();
@@ -47,7 +48,7 @@ function takeCommand(message) {
   if (message.includes("hello") || message.includes("hey")) {
     speak("hello sir,what can i help you?");
   } else if (message.includes("who are you")) {
-    speak("i am Drone a virtual assistant, created by adarsh singh rajput");
+    speak("i am Lola a virtual assistant, created by Ashutosh Mishra");
   } else if (message.includes("how are you")) {
     speak("i am fine what about you?");
   } else if (message.includes("tell")) {
@@ -73,13 +74,27 @@ function takeCommand(message) {
   } else if (message.includes("open spotify")) {
     speak("opening spotify");
     window.open("https://www.spotify.com/", "_blank");
-  } else {
+  } // ✅ Insert this block here
+  else {
+    const contacts = {
+      mom: "+911234567890",
+      kamini: "+918252996812",
+      ashish: "+917209964641"
+    };
+
+    for (let name in contacts) {
+      if (message.includes("call " + name)) {
+        speak(`Calling ${name}`);
+        window.open(`tel:${contacts[name]}`);
+        return;
+      }
+    }
+  }
     speak(
-      `this is waht i found on internet regarding${message.replace(
+      `this is what i found on internet regarding${message.replace(
         "Hatim",
         ""
       )}`
     );
     window.open(`https://www.google.com/search?q=${message}`);
   }
-}
